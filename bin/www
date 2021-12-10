@@ -1,20 +1,29 @@
 #!/usr/bin/env node
-require('dotenv').config();
+
 /**
  * Module dependencies.
  */
+require('dotenv').config();
 
 var app = require('../dist/app').default;
-var debug = require('debug')('setnodetypescript:server');
+var debug = require('debug')('week9node:server');
 var http = require('http');
-
+const mongoose = require('mongoose');
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 
+}).then(() => {
+  console.log('connected to db')
+}).catch((err) => {
+  console.log(err)
+});
+var port = normalizePort(process.env.PORT || '3006');
+app.set('port', port);
 /**
  * Create HTTP server.
  */

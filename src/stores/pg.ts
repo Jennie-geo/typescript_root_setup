@@ -1,4 +1,4 @@
-import postgress from 'postgres';
-const sql = postgress(process.env.DEFAULT_URL);
+// import postgress from 'postgres';
+// const sql = postgress(process.env.DEFAULT_URL);
 
-export default sql;
+// export default sql;
